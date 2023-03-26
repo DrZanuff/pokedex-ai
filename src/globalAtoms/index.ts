@@ -1,6 +1,7 @@
 import { atom } from "recoil"
+import type { Pokemon } from "@/src/services/requests/getPokemon/getPokemon.types"
 
-export const promptInputContext = atom({
-  key: "promptInputContext",
-  default: "",
+export const currentPokemonContext = atom({
+  key: "currentPokemonContext",
+  default: {} as Pokemon,
 })

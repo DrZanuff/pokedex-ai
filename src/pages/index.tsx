@@ -1,9 +1,6 @@
 import Head from "next/head"
-import { Inter } from "next/font/google"
 import { Prompt } from "@/src/components/Prompt"
 import styles from "@/src/styles/Home.module.css"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export default function Home() {
   return (

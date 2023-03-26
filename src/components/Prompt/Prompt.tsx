@@ -1,12 +1,16 @@
 import { useState, useCallback } from "react"
 import { PromptResponseData } from "../../pages/api/prompt/promptHandler.types"
 import axios from "axios"
+import { getPokemon } from "../../services/requests/getPokemon"
+import { useSetRecoilState } from "recoil"
+import { currentPokemonContext } from "@/src/globalAtoms"
 import * as S from "./Prompt.css"
 
 export function Prompt() {
   const [promptText, setPromptText] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [pokemonName, setPokemonName] = useState("")
+  const setCurrentPokemon = useSetRecoilState(currentPokemonContext)
 
   const handlePromptChange = useCallback((value: string) => {
     setPromptText(() => (value.length > 280 ? value.slice(0, 280) : value))
@@ -19,17 +23,22 @@ export function Prompt() {
       const response = await axios.post<PromptResponseData>("/api/prompt", {
         prompt: promptText,
       })
-      setPokemonName(response.data.promptResponse)
-      // const response = await axios.post("/api/hello", { prompt: "just a test" })
+
+      const formattedPokemonName = String(response.data.promptResponse || "")
+        .replace(/[. ]+/g, "")
+        .toLowerCase()
+
+      const currentPokemon = await getPokemon(formattedPokemonName)
+      setCurrentPokemon(currentPokemon)
+      setPokemonName(formattedPokemonName)
       console.log({ response, promptText })
-    } catch (e) {
+    } catch (e: any) {
       console.log(e)
+      setPokemonName(`Pokemon not found... Guess: ${e?.request?.responseURL}`)
     }
 
-    // const response = fetch('/api/prompt',)
-
     setIsLoading(false)
-  }, [promptText])
+  }, [promptText, setCurrentPokemon])
 
   return (
     <div className={S.PromptContainer}>
@@ -40,7 +49,7 @@ export function Prompt() {
         rows={5}
         cols={33}
       />
-      <span>Pokemon: {pokemonName}</span>
+      <span>Pokemon: {pokemonName || ""}</span>
       <button
         disabled={promptText.length === 0 || isLoading}
         onClick={handlePromptConfirm}>

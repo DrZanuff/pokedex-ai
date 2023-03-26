@@ -43,7 +43,7 @@ export async function promptHandler(
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: generatePrompt(prompt),
-      max_tokens: 50,
+      max_tokens: 200,
       temperature: 0,
     })
 
