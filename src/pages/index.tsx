@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { Prompt } from "@/src/components/Prompt"
+import { PokemonDescription } from "@/src/components/PokemonDescription"
 import styles from "@/src/styles/Home.module.css"
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Prompt />
+        <PokemonDescription />
       </main>
     </>
   )
