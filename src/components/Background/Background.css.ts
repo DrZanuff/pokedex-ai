@@ -13,4 +13,6 @@ export const BackgroundContainer = style({
 globalStyle(`${BackgroundContainer} img`, {
   objectFit: 'cover',
   width: '100%',
+  opacity: '0.8',
+  // filter: 'blur(2px)',
 })
