@@ -25,8 +25,10 @@ export function Prompt() {
       })
 
       const formattedPokemonName = String(response.data.promptResponse || '')
-        .replace(/[. ]+/g, '')
+        .replace(/[?. ]+/g, '')
+        .replace(/\r?\n|\r/, '')
         .toLowerCase()
+        .trim()
 
       console.log('DBG: AI API response', { response, promptText })
       if (formattedPokemonName.includes('error')) {
