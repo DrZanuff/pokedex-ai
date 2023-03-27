@@ -1,0 +1,1 @@
+export { PokemonDescription } from "./PokemonDescription"

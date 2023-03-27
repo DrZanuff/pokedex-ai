@@ -1,0 +1,12 @@
+import type { {{name}}Props } from './{{name}}.types'
+import * as S from './{{name}}.{{style}}'
+
+export function {{name}} ( { value } : {{name}}Props ) {
+
+  return (
+    <div className={S.{{name}}Container}>
+      <h1>{{name}}</h1>
+      <h2>{value}</h2>
+    </div>
+  )
+}

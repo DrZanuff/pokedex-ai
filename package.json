@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "plop": "plop"
   },
   "dependencies": {
     "@types/node": "18.15.9",
@@ -18,6 +19,7 @@
     "lodash": "^4.17.21",
     "next": "13.2.4",
     "openai": "^3.2.1",
+    "plop": "^3.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "recoil": "^0.7.7",
