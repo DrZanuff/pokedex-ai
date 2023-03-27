@@ -1,7 +1,7 @@
-import Head from "next/head"
-import { Prompt } from "@/src/components/Prompt"
-import { PokemonDescription } from "@/src/components/PokemonDescription"
-import styles from "@/src/styles/Home.module.css"
+import Head from 'next/head'
+import { Pokedex } from '@/src/components/Pokedex'
+import { Background } from '@/src/components/Background'
+import styles from '@/src/styles/Home.module.css'
 
 export default function Home() {
   return (
@@ -12,9 +12,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Background />
       <main className={styles.main}>
-        <Prompt />
-        <PokemonDescription />
+        <Pokedex />
       </main>
     </>
   )

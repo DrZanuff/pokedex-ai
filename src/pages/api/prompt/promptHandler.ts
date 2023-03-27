@@ -1,33 +1,33 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next"
-import { Configuration, OpenAIApi } from "openai"
-import { get } from "lodash"
-import { generatePrompt } from "@/src/helpers/generatePrompt"
-import type { PromptResponseData, Error } from "./promptHandler.types"
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { Configuration, OpenAIApi } from 'openai'
+import { get } from 'lodash'
+import { generatePrompt } from '@/src/helpers/generatePrompt'
+import type { PromptResponseData, Error } from './promptHandler.types'
 
 export async function promptHandler(
   req: NextApiRequest,
   res: NextApiResponse<PromptResponseData | Error>
 ) {
-  const apiKey = process.env.OPENAI_API || ""
-  const organization = process.env.OPENAI_ORG || ""
+  const apiKey = process.env.OPENAI_API || ''
+  const organization = process.env.OPENAI_ORG || ''
 
   if (!apiKey) {
     res.status(500).json({
       error: {
         message:
-          "OpenAI API key not configured, please follow instructions in README.md",
+          'OpenAI API key not configured, please follow instructions in README.md',
       },
     })
     return
   }
 
-  const prompt = String(get(req, "body.prompt", ""))
+  const prompt = String(get(req, 'body.prompt', ''))
 
   if (!prompt) {
     res.status(500).json({
       error: {
-        message: "Missing prompt on the payload",
+        message: 'Missing prompt on the payload',
       },
     })
   }
@@ -41,14 +41,14 @@ export async function promptHandler(
 
   try {
     const completion = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: 'text-davinci-003',
       prompt: generatePrompt(prompt),
       max_tokens: 200,
       temperature: 0,
     })
 
-    const promptResponse =
-      completion?.data?.choices[0].text || "Sorry, something went wrong"
+    console.log('DBG:', { completion })
+    const promptResponse = completion?.data?.choices[0].text || 'error'
 
     res.status(200).json({ promptResponse })
   } catch (error: any) {
@@ -62,7 +62,7 @@ export async function promptHandler(
     } else {
       res.status(500).json({
         error: {
-          message: "An error occurred during your request.",
+          message: 'An error occurred during your request.',
         },
       })
     }

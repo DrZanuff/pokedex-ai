@@ -1,15 +1,15 @@
-import { useState, useCallback } from "react"
-import { PromptResponseData } from "../../pages/api/prompt/promptHandler.types"
-import axios from "axios"
-import { getPokemon } from "../../services/requests/getPokemon"
-import { useSetRecoilState } from "recoil"
-import { currentPokemonContext } from "@/src/globalAtoms"
-import * as S from "./Prompt.css"
+import { useState, useCallback } from 'react'
+import { PromptResponseData } from '../../pages/api/prompt/promptHandler.types'
+import axios from 'axios'
+import { getPokemon } from '../../services/requests/getPokemon'
+import { useSetRecoilState } from 'recoil'
+import { currentPokemonContext } from '@/src/globalAtoms'
+import * as S from './Prompt.css'
 
 export function Prompt() {
-  const [promptText, setPromptText] = useState("")
+  const [promptText, setPromptText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [pokemonName, setPokemonName] = useState("")
+  const [pokemonName, setPokemonName] = useState('')
   const setCurrentPokemon = useSetRecoilState(currentPokemonContext)
 
   const handlePromptChange = useCallback((value: string) => {
@@ -20,21 +20,27 @@ export function Prompt() {
     setIsLoading(true)
 
     try {
-      const response = await axios.post<PromptResponseData>("/api/prompt", {
+      const response = await axios.post<PromptResponseData>('/api/prompt', {
         prompt: promptText,
       })
 
-      const formattedPokemonName = String(response.data.promptResponse || "")
-        .replace(/[. ]+/g, "")
+      const formattedPokemonName = String(response.data.promptResponse || '')
+        .replace(/[. ]+/g, '')
         .toLowerCase()
+
+      console.log('DBG: AI API response', { response, promptText })
+      if (formattedPokemonName.includes('error')) {
+        throw 'Sorry, no pokemon found with this description... Try to improve your prompt.'
+      }
 
       const currentPokemon = await getPokemon(formattedPokemonName)
       setCurrentPokemon(currentPokemon)
       setPokemonName(formattedPokemonName)
-      console.log({ response, promptText })
     } catch (e: any) {
       console.log(e)
-      setPokemonName(`Pokemon not found... Guess: ${e?.request?.responseURL}`)
+      setPokemonName(
+        `Pokemon not found... Guess: ${e?.request?.responseURL || e}`
+      )
     }
 
     setIsLoading(false)
@@ -49,7 +55,7 @@ export function Prompt() {
         rows={5}
         cols={33}
       />
-      <span>Pokemon: {pokemonName || ""}</span>
+      <span>Pokemon: {pokemonName || ''}</span>
       <button
         disabled={promptText.length === 0 || isLoading}
         onClick={handlePromptConfirm}>
