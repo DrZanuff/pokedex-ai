@@ -3,7 +3,6 @@ import { style } from '@vanilla-extract/css'
 export const TopPanelContainer = style({
   display: 'flex',
   gap: '10px',
-  marginBottom: '15px',
 })
 
 export const SmallLightsContainer = style({
@@ -12,7 +11,6 @@ export const SmallLightsContainer = style({
 })
 
 export const BlueLight = style({
-  // background: 'rgb(206,235,255)',
   width: '45px',
   height: '45px',
   borderRadius: '50%',

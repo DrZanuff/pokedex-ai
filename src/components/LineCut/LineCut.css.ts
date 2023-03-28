@@ -14,6 +14,15 @@ export const SessionOne = style({
   borderRight: '4px solid #88071a',
   borderBottomRightRadius: '15px',
   marginTop: 'auto',
+
+  ':before': {
+    content: '',
+    width: '30px',
+    borderBottom: '4px solid #88071a',
+    position: 'absolute',
+    bottom: '0',
+    left: '-18px',
+  },
 })
 
 export const SessionTwo = style({
@@ -24,4 +33,13 @@ export const SessionTwo = style({
   borderTopLeftRadius: '15px',
   position: 'relative',
   left: '-4px',
+
+  ':after': {
+    content: '',
+    width: '30px',
+    borderTop: '4px solid #88071a',
+    position: 'absolute',
+    bottom: '100%',
+    right: '-19px',
+  },
 })

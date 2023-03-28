@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import { PromptResponseData } from '../../pages/api/prompt/promptHandler.types'
+import { Feedback } from '@/src/components/Feedback'
 import axios from 'axios'
 import { getPokemon } from '../../services/requests/getPokemon'
 import { useSetRecoilState } from 'recoil'
@@ -40,9 +41,7 @@ export function Prompt() {
       setPokemonName(formattedPokemonName)
     } catch (e: any) {
       console.log(e)
-      setPokemonName(
-        `Pokemon not found... Guess: ${e?.request?.responseURL || e}`
-      )
+      setPokemonName(`Pokemon not found... ${e?.request?.responseURL || e}`)
     }
 
     setIsLoading(false)
@@ -57,7 +56,7 @@ export function Prompt() {
         rows={5}
         cols={33}
       />
-      <span>Pokemon: {pokemonName || ''}</span>
+      <Feedback feedback={pokemonName} isLoading={isLoading} />
       <button
         disabled={promptText.length === 0 || isLoading}
         onClick={handlePromptConfirm}>
