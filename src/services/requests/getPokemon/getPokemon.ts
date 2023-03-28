@@ -10,7 +10,7 @@ export async function getPokemon(pokemonName: string) {
   if (cachedPokemon) {
     return cachedPokemon
   }
-  // TODO: add try catch logic here
+  // TODO: add try catch logic here and add logic check if we can save in the cache
   const response = await axios.get<Pokemon>(
     `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
   )
