@@ -3,20 +3,40 @@ import { style, globalStyle } from '@vanilla-extract/css'
 export const PokemonStatsContainer = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '10px',
+  gap: '3px',
+  width: '100%',
 })
 
 export const Stat = style({
   display: 'flex',
-  gap: '5px',
   width: '100%',
-  border: '2px solid #C3C3C3',
+  minHeight: '26.5px',
 })
 
 globalStyle(`${Stat} b`, {
-  color: 'pink',
+  color: '#dedede',
+  textAlign: 'center',
+  verticalAlign: 'middle',
+  fontFamily: 'var(--font-mono)',
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
+  width: '100%',
+  backgroundColor: '#232323',
+  borderRadius: '5px 0px 0px 5px;',
+  display: 'flex',
+  justifyContent: 'center',
+  padding: '4px',
 })
 
 globalStyle(`${Stat} span`, {
-  color: 'green',
+  color: '#232323',
+  backgroundColor: '#28aafe',
+  outline: '2px solid #232323',
+  minWidth: '80px',
+  padding: '4px 8px 4px 4px',
+  borderRadius: '4px',
+  marginLeft: 'auto',
+  textAlign: 'right',
+  fontFamily: 'var(--font-mono)',
+  fontWeight: 'bold',
 })

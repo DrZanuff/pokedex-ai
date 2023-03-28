@@ -21,12 +21,13 @@ export const FeedbackBox = style({
   backgroundColor: '#dedede',
   borderRadius: '6px',
   color: '#232323',
-  top: '-75px',
-  left: '50px',
+  top: '-80px',
+  left: '60px',
   width: '320px',
   height: '80px',
   opacity: '0',
   animation: `${show} 6s`,
+  wordBreak: 'break-all',
 
   ':after': {
     content: '',
@@ -35,10 +36,9 @@ export const FeedbackBox = style({
     backgroundColor: '#dedede',
     borderBottom: '4px solid #232323',
     borderRight: '4px solid #232323',
-    transform: 'rotate(45deg)',
+    transform: 'rotate(135deg)',
     position: 'relative',
-    top: '100%',
-    marginTop: '6px',
+    left: '-20px',
   },
 })
 

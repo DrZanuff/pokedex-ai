@@ -25,7 +25,14 @@ export function Prompt() {
         prompt: promptText,
       })
 
-      const formattedPokemonName = String(response.data.promptResponse || '')
+      const preFormattedPokemon = String(
+        response.data.promptResponse || ''
+      ).split('\n')
+
+      const pokemon =
+        preFormattedPokemon[preFormattedPokemon.length > 0 ? 1 : 0]
+
+      const formattedPokemonName = String(pokemon)
         .replace(/[?. ]+/g, '')
         .replace(/\r?\n|\r/, '')
         .toLowerCase()

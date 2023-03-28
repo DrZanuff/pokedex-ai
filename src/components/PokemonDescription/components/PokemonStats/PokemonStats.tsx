@@ -7,7 +7,7 @@ import * as S from './PokemonStats.css'
 export function PokemonStats() {
   const currentPokemon = useRecoilValue(currentPokemonContext)
 
-  const emptyStats = [...Array(10).keys()].map(() => (
+  const emptyStats = [...Array(6).keys()].map(() => (
     <div key={v4()} className={S.Stat}>
       <b></b>
       <span></span>

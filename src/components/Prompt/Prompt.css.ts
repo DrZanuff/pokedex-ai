@@ -25,6 +25,9 @@ globalStyle(`${PromptContainer} button`, {
   borderRadius: '6px',
   border: '2px solid #2c3116',
   outline: 'none',
+  fontFamily: 'var(--font-mono)',
+  fontWeight: 'bold',
+  textTransform: 'uppercase',
 })
 
 globalStyle(`${PromptContainer} button:hover`, {
@@ -33,6 +36,7 @@ globalStyle(`${PromptContainer} button:hover`, {
 })
 
 globalStyle(`${PromptContainer} button:disabled`, {
-  backgroundColor: '#a0bca4',
-  color: '#2c3116',
+  backgroundColor: '#52ae5f',
+  color: '#a0bca4',
+  cursor: 'not-allowed',
 })
