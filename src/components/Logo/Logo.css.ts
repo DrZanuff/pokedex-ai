@@ -20,4 +20,5 @@ export const LogoContainer = style({
   position: 'absolute',
   top: '0px',
   animation: `${logo} 2s ease infinite`,
+  zIndex: '2',
 })

@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { Pokedex } from '@/src/components/Pokedex'
 import { Logo } from '@/src/components/Logo'
+import { TradeMark } from '@/src/components/TradeMark'
 import { Background } from '@/src/components/Background'
 import styles from '@/src/styles/Home.module.css'
 
@@ -15,8 +16,11 @@ export default function Home() {
       </Head>
       <Background />
       <main className={styles.main}>
-        <Logo />
-        <Pokedex />
+        <div className={styles.container}>
+          <Logo />
+          <Pokedex />
+          <TradeMark />
+        </div>
       </main>
     </>
   )

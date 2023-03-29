@@ -10,5 +10,7 @@ export const PokedexContainer = style({
   boxShadow: '0px 6px 0px 1px #88071a',
   border: '4px solid #88071a',
   padding: '15px',
-  marginTop: '30px',
+  // marginTop: '30px',
+  position: 'absolute',
+  top: '150px',
 })
