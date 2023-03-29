@@ -57,7 +57,7 @@ export function Prompt() {
   return (
     <div className={S.PromptContainer}>
       <textarea
-        placeholder="Describe a pokemon"
+        placeholder="Describe a pokemon a click in the PROMPT button..."
         onChange={(event) => handlePromptChange(event.target.value)}
         value={promptText}
         rows={5}

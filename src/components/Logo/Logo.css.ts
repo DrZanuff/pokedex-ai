@@ -18,7 +18,7 @@ export const LogoContainer = style({
   display: 'flex',
   justifyContent: 'center',
   position: 'absolute',
-  top: '0px',
+  top: 'calc(50% - 330px)',
   animation: `${logo} 2s ease infinite`,
   zIndex: '2',
 })
