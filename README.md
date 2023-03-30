@@ -6,6 +6,7 @@
 
 
 PokedexAI is a small open-source web app that uses the ChatGPT API and the PokemonAPI to provide information about Pokemon based on user prompts.
+You can test the APP here: [PokedexAI](https://pokedex-ai.vercel.app/)
 
 ## **Technologies Used**
 
