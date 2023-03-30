@@ -53,6 +53,7 @@ export const ImageElement = style({
   borderRadius: '8px',
   width: '100%',
   height: '100%',
+  objectFit: 'contain',
 })
 
 export const PokemonName = style({

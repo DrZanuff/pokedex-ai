@@ -24,12 +24,6 @@ export const LogoContainer = style({
 
   '@media': {
     '(max-width: 750px)': {
-      top: '80px',
-      width: '85%',
-      height: 'auto',
-      animation: 'none',
-    },
-    '(max-width: 380px)': {
       top: '10px',
       right: '20px',
       width: '50%',

@@ -7,7 +7,7 @@ export const LineCutContainer = style({
   // left: '-15px',
 
   '@media': {
-    '(max-width: 380px)': {
+    '(max-width: 750px)': {
       display: 'none',
     },
   },

@@ -7,10 +7,7 @@ export const PromptContainer = style({
 
   '@media': {
     '(max-width: 750px)': {
-      marginTop: '90px',
-    },
-    '(max-width: 380px)': {
-      marginTop: '00px',
+      marginTop: '0px',
     },
   },
 })
