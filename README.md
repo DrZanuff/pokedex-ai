@@ -1,5 +1,10 @@
 # **PokedexAI**
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/23051495/228877951-1a787f86-abc3-404b-a270-c9949ac34ff5.png" />
+</p>
+
+
 PokedexAI is a small open-source web app that uses the ChatGPT API and the PokemonAPI to provide information about Pokemon based on user prompts.
 
 ## **Technologies Used**
