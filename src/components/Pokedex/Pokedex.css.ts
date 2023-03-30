@@ -12,4 +12,16 @@ export const PokedexContainer = style({
   padding: '15px',
   position: 'absolute',
   top: 'calc(50% - 180px)',
+
+  '@media': {
+    '(max-width: 750px)': {
+      top: '0px',
+      height: '100%',
+      width: '100%',
+      borderRadius: '0px',
+    },
+    '(max-width: 380px)': {
+      gap: '0px',
+    },
+  },
 })

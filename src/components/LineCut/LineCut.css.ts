@@ -5,6 +5,12 @@ export const LineCutContainer = style({
   height: '30px',
   position: 'relative',
   // left: '-15px',
+
+  '@media': {
+    '(max-width: 380px)': {
+      display: 'none',
+    },
+  },
 })
 
 export const SessionOne = style({

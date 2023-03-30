@@ -1,4 +1,4 @@
-import { style, keyframes } from '@vanilla-extract/css'
+import { style, keyframes, globalStyle } from '@vanilla-extract/css'
 
 const logo = keyframes({
   '0%': {
@@ -21,4 +21,28 @@ export const LogoContainer = style({
   top: 'calc(50% - 330px)',
   animation: `${logo} 2s ease infinite`,
   zIndex: '2',
+
+  '@media': {
+    '(max-width: 750px)': {
+      top: '80px',
+      width: '85%',
+      height: 'auto',
+      animation: 'none',
+    },
+    '(max-width: 380px)': {
+      top: '10px',
+      right: '20px',
+      width: '50%',
+      height: 'auto',
+      animation: 'none',
+    },
+  },
+})
+
+globalStyle(`${LogoContainer} img`, {
+  '@media': {
+    '(max-width: 750px)': {
+      width: '100%',
+    },
+  },
 })

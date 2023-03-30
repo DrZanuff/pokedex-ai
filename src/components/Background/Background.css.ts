@@ -8,6 +8,12 @@ export const BackgroundContainer = style({
   width: '100vw',
   height: '100vh',
   zIndex: '0',
+
+  '@media': {
+    '(max-width: 750px)': {
+      display: 'none',
+    },
+  },
 })
 
 globalStyle(`${BackgroundContainer} img`, {

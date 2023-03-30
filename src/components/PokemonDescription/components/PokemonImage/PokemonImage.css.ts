@@ -14,6 +14,13 @@ export const EmpytImageHolder = style({
   backgroundColor: '#dddfde',
   outline: '3px solid #232323',
   padding: '10px',
+
+  '@media': {
+    '(max-width: 750px)': {
+      width: '100%',
+      height: '150px',
+    },
+  },
 })
 
 globalStyle(`${EmpytImageHolder} span`, {
@@ -31,6 +38,13 @@ export const ImageContainer = style({
   backgroundColor: '#dddfde',
   outline: '3px solid #232323',
   padding: '10px',
+
+  '@media': {
+    '(max-width: 750px)': {
+      width: '100%',
+      height: '150px',
+    },
+  },
 })
 
 export const ImageElement = style({

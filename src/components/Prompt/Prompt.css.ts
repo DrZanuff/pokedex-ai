@@ -4,6 +4,15 @@ export const PromptContainer = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '10px',
+
+  '@media': {
+    '(max-width: 750px)': {
+      marginTop: '90px',
+    },
+    '(max-width: 380px)': {
+      marginTop: '00px',
+    },
+  },
 })
 
 globalStyle(`${PromptContainer} textarea`, {

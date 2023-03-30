@@ -11,6 +11,13 @@ export const TradeMarkContainer = style({
   backgroundColor: 'rgb(255,255,255,0.3)',
   borderRadius: '5px',
   backdropFilter: 'blur(10px)',
+
+  '@media': {
+    '(max-width: 750px)': {
+      bottom: '10px',
+      width: '90%',
+    },
+  },
 })
 
 globalStyle(`${TradeMarkContainer} a`, {
