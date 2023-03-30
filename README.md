@@ -29,7 +29,7 @@ PokedexAI is a small open-source web app that uses the ChatGPT API and the Pokem
 - Create a `.env.local` on the root of the project and add two variables with you API keys from
   [OpenAI](https://platform.openai.com/account/api-keys)
   - OPENAI_API=YOUR_API_KEY
-  - OPENAI_ORG=OPTINOAL
+  - OPENAI_ORG=OPTIONAL
 
 - Clone the repository
 
