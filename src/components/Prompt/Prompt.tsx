@@ -25,27 +25,16 @@ export function Prompt() {
         prompt: promptText,
       })
 
-      const preFormattedPokemon = String(
-        response.data.promptResponse || ''
-      ).split('\n')
-
-      const pokemon =
-        preFormattedPokemon[preFormattedPokemon.length > 0 ? 1 : 0]
-
-      const formattedPokemonName = String(pokemon)
-        .replace(/[?. ]+/g, '')
-        .replace(/\r?\n|\r/, '')
-        .toLowerCase()
-        .trim()
+      const pokemon = String(response.data.promptResponse || '')
 
       console.log('DBG: AI API response', { response, promptText })
-      if (formattedPokemonName.includes('error')) {
+      if (pokemon.includes('error')) {
         throw 'Sorry, no pokemon found with this description... Try to improve your prompt.'
       }
 
-      const currentPokemon = await getPokemon(formattedPokemonName)
+      const currentPokemon = await getPokemon(pokemon)
       setCurrentPokemon(currentPokemon)
-      setPokemonName(formattedPokemonName)
+      setPokemonName(pokemon)
     } catch (e: any) {
       console.log(e)
       setPokemonName(`Pokemon not found... ${e?.request?.responseURL || e}`)

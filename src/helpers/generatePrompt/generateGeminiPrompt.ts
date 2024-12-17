@@ -4,7 +4,9 @@ You must answer with only one word, that will be the name of the pokemon.
 Always suggest only one pokemon and this pokemon must be official.
 Just answer if one word.
 If the input is just one word, return the same input.
-If you can't find any pokemon with the criteria answer: error
+If you can't find any pokemon with the criteria suggest a random pokemon
+
+example:
 
 What pokemon is a rat and its color is yellow?
 pikachu
@@ -17,6 +19,16 @@ charmander
 \n
 `
 
-export function generatePrompt(prompt: string) {
-  return JSON.stringify(sufix + prompt)
+export function generateGeminiPrompt(prompt: string) {
+  return {
+    contents: [
+      {
+        parts: [
+          {
+            text: sufix + prompt,
+          },
+        ],
+      },
+    ],
+  }
 }

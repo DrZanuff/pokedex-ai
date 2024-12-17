@@ -1,22 +1,23 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Configuration, OpenAIApi } from 'openai'
 import { get } from 'lodash'
 import { generatePrompt } from '@/src/helpers/generatePrompt'
 import type { PromptResponseData, Error } from './promptHandler.types'
+import axios from 'axios'
+import { generateGeminiPrompt } from '@/src/helpers/generatePrompt/generateGeminiPrompt'
 
 export async function promptHandler(
   req: NextApiRequest,
   res: NextApiResponse<PromptResponseData | Error>
 ) {
-  const apiKey = process.env.OPENAI_API || ''
-  const organization = process.env.OPENAI_ORG || ''
+  const apiKey = process.env.GEMINI_API || ''
+  const url = process.env.GEMINI_URL || ''
 
-  if (!apiKey) {
+  if (!apiKey || !url) {
     res.status(500).json({
       error: {
         message:
-          'OpenAI API key not configured, please follow instructions in README.md',
+          'GEMINI API key or URL not configured, please follow instructions in README.md',
       },
     })
     return
@@ -32,34 +33,30 @@ export async function promptHandler(
     })
   }
 
-  const configuration = new Configuration({
-    apiKey,
-    organization,
-  })
-
-  const openai = new OpenAIApi(configuration)
-
   try {
-    const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: generatePrompt(prompt),
-      max_tokens: 200,
-      temperature: 0,
-    })
+    const geminiPrompt = generateGeminiPrompt(prompt)
 
-    console.log('DBG:', { completion })
-    const promptResponse = completion?.data?.choices[0].text || 'error'
+    const response = await axios.post(
+      `${url}${apiKey}`,
+      generateGeminiPrompt(prompt)
+    )
+
+    const completion = response.data?.candidates?.[0]?.content?.parts?.[0]?.text
+
+    const cleanCompletion = String(completion)
+      .trim()
+      .replace(/\s+/g, '')
+      .toLowerCase()
+
+    console.log('DBG:', { cleanCompletion, geminiPrompt })
+    const promptResponse = cleanCompletion || 'error'
 
     res.status(200).json({ promptResponse })
   } catch (error: any) {
-    if (error.response) {
-      console.error(error.response.status, error.response.data)
-      res.status(error.response.status).json({
-        error: {
-          message: error.response.data,
-        },
-      })
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error:', error.message)
     } else {
+      console.error('Unexpected error:', error)
       res.status(500).json({
         error: {
           message: 'An error occurred during your request.',
