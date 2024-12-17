@@ -4,7 +4,7 @@
   <img src="https://user-images.githubusercontent.com/23051495/228877951-1a787f86-abc3-404b-a270-c9949ac34ff5.png" />
 </p>
 
-PokedexAI is a small open-source web app that uses the ChatGPT API and the PokemonAPI to provide information about Pokemon based on user prompts.
+PokedexAI is a small open-source web app that use Gemini API (originally the project used Open AI) and the PokemonAPI to provide information about Pokemon based on user prompts.
 You can test the APP here: [PokedexAI](https://pokedex-ai.vercel.app/)
 
 ## **Technologies Used**
