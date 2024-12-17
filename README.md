@@ -4,7 +4,6 @@
   <img src="https://user-images.githubusercontent.com/23051495/228877951-1a787f86-abc3-404b-a270-c9949ac34ff5.png" />
 </p>
 
-
 PokedexAI is a small open-source web app that uses the ChatGPT API and the PokemonAPI to provide information about Pokemon based on user prompts.
 You can test the APP here: [PokedexAI](https://pokedex-ai.vercel.app/)
 
@@ -21,16 +20,17 @@ You can test the APP here: [PokedexAI](https://pokedex-ai.vercel.app/)
 
 ## **Features**
 
-- Retrieve data from the ChatGPT API to generate Pokemon names based on user prompts
+- Retrieve data from the GEMINI API to generate Pokemon names based on user prompts
 - Retrieve data from the PokemonAPI to display information about the generated Pokemon, including stats, name, and image
 - Uses CSS to create a Pokedex-like interface for displaying the Pokemon information
 
 ## **Installation**
 
 - Create a `.env.local` on the root of the project and add two variables with you API keys from
-  [OpenAI](https://platform.openai.com/account/api-keys)
-  - OPENAI_API=YOUR_API_KEY
-  - OPENAI_ORG=OPTIONAL
+  [OpenAI](https://ai.google.dev/gemini-api/docs/api-key)
+
+  - GEMINI_API=YOUR_API_KEY
+  - GEMINI_URL=MODEL_URL // e.g https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=
 
 - Clone the repository
 
@@ -64,6 +64,6 @@ Contributions are welcome! Please submit any issues or pull requests to the[ Git
 
 ## **License**
 
-This project is licensed under the MIT License - see the[ LICENSE](https://chat.openai.com/chat/LICENSE) file for details.
+This project is licensed under the MIT License - see the[ LICENSE](https://ai.google.dev/gemini-api/terms) file for details.
 
 Pokémon and Pokémon character names are trademarks of Nintendo.
