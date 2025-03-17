@@ -30,7 +30,7 @@ You can test the APP here: [PokedexAI](https://pokedex-ai.vercel.app/)
   [OpenAI](https://ai.google.dev/gemini-api/docs/api-key)
 
   - GEMINI_API=YOUR_API_KEY
-  - GEMINI_URL=MODEL_URL // e.g https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=
+  - GEMINI_URL=MODEL_URL // e.g https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=
 
 - Clone the repository
 
